@@ -3,7 +3,7 @@ import sys, copy, random, time
 # 条件
 s = 0 # 始点
 t = 20 # 終点
-n = t - s + 1
+n = t - s + 1 # 頂点数
 m = 100 # 辺の本数
 minWeight = -100 # 辺重みの最小値
 maxWeight = 100 # 辺重みの最大値
@@ -23,7 +23,7 @@ def computeShortestPathBranch(P: list[int], l: int, u: int, t: int, G: list[list
     global T, x, nodeCount
     nodeCount += 1
     if nodeCount % 1000000 == 0:
-        print(f"nodeCount: {nodeCount // 1000000}M")
+        print(f"\t\tnodeCount: {nodeCount // 1000000}M")
     P.append(u)
     visited[u] = True
     if u == t:
@@ -67,7 +67,7 @@ def computeShortestPathBranchAndBound(P: list[int], l: int, u: int, t: int, G: l
 
     nodeCount += 1
     if nodeCount % 1000000 == 0:
-        print(f"nodeCount: {nodeCount // 1000000}M")
+        print(f"\t\tnodeCount: {nodeCount // 1000000}M")
     P.append(u)
 
     if getLow(P,G,d) + l > x:
@@ -116,10 +116,10 @@ def main():
     computeShortestPathBranchAndBound([], 0, s, t, G, d, visited)
     end = time.process_time()
 
-    print(f"最適解: {T}")
-    print(f"最適値: {x}")
-    print(f"探索ノード数: {nodeCount}")
-    print(f"経過時間: {end-start}[s]")
+    print(f"\t最適解: {T}")
+    print(f"\t最適値: {x}")
+    print(f"\t探索ノード数: {nodeCount}")
+    print(f"\t経過時間: {end-start}[s]")
 
     visited = [False for _ in range(s, t+1)]
     T = []
@@ -131,10 +131,10 @@ def main():
     computeShortestPathBranch([], 0, s, t, G, d, visited)
     end = time.process_time()
 
-    print(f"最適解: {T}")
-    print(f"最適値: {x}")
-    print(f"探索ノード数: {nodeCount}")
-    print(f"経過時間: {end-start}[s]")
+    print(f"\t最適解: {T}")
+    print(f"\t最適値: {x}")
+    print(f"\t探索ノード数: {nodeCount}")
+    print(f"\t経過時間: {end-start}[s]")
 
 
 if __name__ == "__main__":
