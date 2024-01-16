@@ -42,7 +42,7 @@ def computeShortestPathBranch(P: list[int], l: int, u: int, t: int, G: list[list
 # |E\P|ステップ以内の単純とは限らないパスで最短のものをベルマンフォード法で求める
 # （ベルマンフォードは，例えば負閉路を複数回周ることで短い値を取ろうとするので単純路でなくなる）
 def getLow(P: list[int], G: list[list[int]], d: dict[(int, int), int]): 
-    dp = [[100000 for j in range(s,t+1)] for i in range(n - len(P) + 1)]
+    dp = [[100000 for _ in range(s,t+1)] for _ in range(n - len(P) + 1)]
     dp[0][P[-1]] = 0
     
     for k in range(1,n - len(P) + 1):
