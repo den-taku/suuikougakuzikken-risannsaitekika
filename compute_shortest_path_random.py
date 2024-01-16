@@ -4,7 +4,7 @@ import sys, copy, random, time
 s = 0 # 始点
 t = 20 # 終点
 n = t - s + 1 # 頂点数
-m = 100 # 辺の本数
+m = 120 # 辺の本数
 minWeight = -100 # 辺重みの最小値
 maxWeight = 100 # 辺重みの最大値
 
