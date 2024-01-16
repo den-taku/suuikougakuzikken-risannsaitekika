@@ -23,7 +23,7 @@ def computeShortestPathBranch(P: list[int], l: int, u: int, t: int, G: list[list
     global T, x, nodeCount
     nodeCount += 1
     if nodeCount % 1000000 == 0:
-        print(f"\t\tnodeCount: {nodeCount // 1000000}M")
+        print(f"\r\t\tnodeCount: {nodeCount // 1000000}M", end='')
     P.append(u)
     visited[u] = True
     if u == t:
@@ -66,8 +66,11 @@ def computeShortestPathBranchAndBound(P: list[int], l: int, u: int, t: int, G: l
     global T, x, nodeCount
 
     nodeCount += 1
-    if nodeCount % 1000000 == 0:
-        print(f"\t\tnodeCount: {nodeCount // 1000000}M")
+    if nodeCount % 1000 == 0:
+        if nodeCount >= 1000000:
+            print(f"\r\t\tnodeCount: {nodeCount // 1000000}M{nodeCount // 1000}K", end='')
+        else:
+            print(f"\r\t\tnodeCount: {nodeCount // 1000}K", end='')
     P.append(u)
 
     if getLow(P,G,d) + l > x:
@@ -115,6 +118,7 @@ def main():
     start = time.process_time()
     computeShortestPathBranchAndBound([], 0, s, t, G, d, visited)
     end = time.process_time()
+    print()
 
     print(f"\t最適解: {T}")
     print(f"\t最適値: {x}")
@@ -130,6 +134,7 @@ def main():
     start = time.process_time()
     computeShortestPathBranch([], 0, s, t, G, d, visited)
     end = time.process_time()
+    print()
 
     print(f"\t最適解: {T}")
     print(f"\t最適値: {x}")
