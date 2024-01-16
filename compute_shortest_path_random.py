@@ -4,7 +4,7 @@ import sys, copy, random, time
 s = 0 # 始点
 t = 20 # 終点
 n = t - s + 1
-m = 120 # 辺の本数
+m = 100 # 辺の本数
 minWeight = -100 # 辺重みの最小値
 maxWeight = 100 # 辺重みの最大値
 
@@ -42,7 +42,7 @@ def computeShortestPathBranch(P: list[int], l: int, u: int, t: int, G: list[list
 # |E\P|ステップ以内の単純とは限らないパスで最短のものをベルマンフォード法で求める
 # （ベルマンフォードは，例えば負閉路を複数回周ることで短い値を取ろうとするので単純路でなくなる）
 def getLow(P: list[int], G: list[list[int]], d: dict[(int, int), int]): 
-    dp = [[100000 for _ in range(s,t+1)] for _ in range(n - len(P) + 1)]
+    dp = [[sys.maxsize for _ in range(s,t+1)] for _ in range(n - len(P) + 1)]
     dp[0][P[-1]] = 0
     
     for k in range(1,n - len(P) + 1):
